@@ -1,73 +1,111 @@
-# React + TypeScript + Vite
+# Task Quest - Productivity & Motivation App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React task management application with Redux state management, motivational quotes, and theme support. Built with TypeScript and Vite, featuring advanced state management patterns and error boundary handling.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- ✅ **Task Management** - Create, manage, and track your todos with ease
+- 🎯 **Motivational Quotes** - Get inspired with an integrated quotes feature
+- 🎨 **Dark/Light Theme** - Seamless theme switching with persistent preferences
+- ⚡ **Advanced State Management** - Redux and useReducer patterns for robust state handling
+- 🛡️ **Error Handling** - Comprehensive error boundaries for reliable UX
+- 📱 **Responsive Design** - Works great on all devices
+- ⚙️ **TypeScript** - Full type safety for better development experience
+- 🚀 **Vite** - Lightning-fast build and development experience
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** 18+ with TypeScript
+- **Redux** - State management
+- **Vite** - Build tool and dev server
+- **CSS** - Component-scoped styling
+- **ESLint** - Code quality
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/
+│   ├── ui/
+│   │   ├── ErrorAlert.tsx
+│   │   ├── ErrorBoundary.tsx
+│   │   ├── Loading.tsx
+│   │   └── Page.tsx
+│   ├── layout/
+│   │   ├── Header.tsx
+│   │   ├── Sidebar.tsx
+│   │   ├── Layout.tsx
+│   │   ├── ThemeProvider.tsx
+│   │   └── useThemeMode.ts
+│   ├── FetchWithUseReducer.tsx
+│   ├── MotivationalQuotes.tsx
+│   ├── Todo.tsx
+│   └── TodowithUserReducer.tsx
+├── Redux/
+│   ├── RootReducer.ts
+│   └── Store.ts
+├── theme/
+│   └── theme.ts
+├── App.tsx
+└── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js 16+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/task-quest.git
+cd task-quest
 ```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Start the development server
+```bash
+npm run dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## Usage
+
+### Creating Tasks
+Use the Todo component to add, edit, and delete tasks. Tasks are managed through Redux for global state consistency.
+
+### Switching Themes
+Toggle between dark and light themes using the ThemeProvider. Your preference is automatically saved.
+
+### View Motivational Quotes
+Browse through motivational quotes in the MotivationalQuotes component to stay inspired.
+
+## Key Components
+
+- **ErrorBoundary** - Catches and displays errors gracefully
+- **ThemeProvider** - Manages application-wide theme switching
+- **Layout** - Main layout wrapper with header and sidebar
+- **Loading** - Reusable loading indicator component
+
+## License
+
+MIT
+
+## Contributing
+
+Contributions are welcome! Feel free to open issues and submit pull requests.
