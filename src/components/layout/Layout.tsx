@@ -7,6 +7,10 @@ import TodoWithReducer from "../TodowithUserReducer";
 import FetchWithUseReducer from "../FetchWithUseReducer";
 import MotivationalQuotes from "../MotivationalQuotes";
 import { ErrorBoundary } from "../ui";
+import TodoWithRedux from "../../Redux/components/Todo";
+import FetchWithRedux from "../../Redux/components/FetchWithRedux";
+import TodoWithReduxToolkit from "../../ReduxToolkit/components/TodoWithReduxToolkit";
+import FetchDataWithReduxToolKit from "../../ReduxToolkit/components/FetchWithReduxToolkit";
 
 interface LayoutProps {
   children?: React.ReactNode;
@@ -15,14 +19,31 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentView, setCurrentView] = useState<
-    "home" | "fetch" | "todo" | "todoReducer"
+    | "home"
+    | "fetch"
+    | "todo"
+    | "todoReducer"
+    | "todowithRedux"
+    | "FetchWithRedux"
+    | "TodoWithReduxToolkit"
+    | "FetchDataWithReduxToolKit"
   >("home");
 
   const handleDrawerToggle = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  const handleNavigate = (view: "home" | "fetch" | "todo" | "todoReducer") => {
+  const handleNavigate = (
+    view:
+      | "home"
+      | "fetch"
+      | "todo"
+      | "todoReducer"
+      | "todowithRedux"
+      | "FetchWithRedux"
+      | "TodoWithReduxToolkit"
+      | "FetchDataWithReduxToolKit",
+  ) => {
     setCurrentView(view);
   };
 
@@ -36,6 +57,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         return <FetchWithUseReducer />;
       case "todoReducer":
         return <TodoWithReducer />;
+      case "todowithRedux":
+        return <TodoWithRedux />;
+
+      case "FetchWithRedux":
+        return <FetchWithRedux />;
+      case "TodoWithReduxToolkit":
+        return <TodoWithReduxToolkit />;
+      case "FetchDataWithReduxToolKit":
+        return <FetchDataWithReduxToolKit />;
       default:
         return <MotivationalQuotes />;
     }
@@ -52,7 +82,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       />
       <Box component="main" sx={{ flexGrow: 1, p: 0, width: "100%" }}>
         <Toolbar />
-        <Container maxWidth={false} disableGutters sx={{ width: "100%" }}>
+        <Container disableGutters sx={{ width: "100%" }}>
           <ErrorBoundary>{children || renderCurrentView()}</ErrorBoundary>
         </Container>
       </Box>

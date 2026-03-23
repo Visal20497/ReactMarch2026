@@ -68,7 +68,7 @@ const Todo = () => {
 
   return (
     <Page title="📝 Todo App (useState)" fullWidth>
-      <Paper elevation={3} sx={{ p: 3, mb: 3, maxWidth: '100%' }}>
+      <Paper elevation={3} sx={{ p: 3, mb: 3, maxWidth: "100%" }}>
         <Box sx={{ display: "flex", gap: 2, mb: 3 }}>
           <TextField
             fullWidth
@@ -98,7 +98,10 @@ const Todo = () => {
                   >
                     <EditIcon />
                   </IconButton>
-                  <IconButton onClick={() => DeleteHandler(todo.id)}>
+                  <IconButton
+                    onClick={() => DeleteHandler(todo.id)}
+                    disabled={edit !== null}
+                  >
                     <DeleteIcon />
                   </IconButton>
                 </>

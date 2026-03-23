@@ -12,7 +12,7 @@ import {
 import {
   Home as HomeIcon,
   ListAlt as TodoIcon,
-  GetApp as FetchIcon
+  GetApp as FetchIcon,
 } from "@mui/icons-material";
 
 const drawerWidth = 240;
@@ -20,8 +20,26 @@ const drawerWidth = 240;
 interface SidebarProps {
   open: boolean;
   onClose: () => void;
-  onNavigate: (view: "home" | "fetch" | "todo" | "todoReducer") => void;
-  currentView: "home" | "fetch" | "todo" | "todoReducer";
+  onNavigate: (
+    view:
+      | "home"
+      | "fetch"
+      | "todo"
+      | "todoReducer"
+      | "todowithRedux"
+      | "FetchWithRedux"
+      | "TodoWithReduxToolkit"
+      | "FetchDataWithReduxToolKit",
+  ) => void;
+  currentView:
+    | "home"
+    | "fetch"
+    | "todo"
+    | "todoReducer"
+    | "todowithRedux"
+    | "FetchWithRedux"
+    | "TodoWithReduxToolkit"
+    | "FetchDataWithReduxToolKit";
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
@@ -51,9 +69,39 @@ const Sidebar: React.FC<SidebarProps> = ({
       icon: <TodoIcon />,
       view: "todoReducer" as const,
     },
+    {
+      text: "Todo (Redux)",
+      icon: <TodoIcon />,
+      view: "todowithRedux" as const,
+    },
+    {
+      text: "Fetch (Redux)",
+      icon: <FetchIcon />,
+      view: "FetchWithRedux" as const,
+    },
+    {
+      text: "Todo (Redux Toolkit)",
+      icon: <TodoIcon />,
+      view: "TodoWithReduxToolkit" as const,
+    },
+    {
+      text: "Fetch Data (Redux Toolkit)",
+      icon: <FetchIcon />,
+      view: "FetchDataWithReduxToolKit" as const,
+    },
   ];
 
-  const handleMenuClick = (view: "home" | "fetch" | "todo" | "todoReducer") => {
+  const handleMenuClick = (
+    view:
+      | "home"
+      | "fetch"
+      | "todo"
+      | "todoReducer"
+      | "todowithRedux"
+      | "FetchWithRedux"
+      | "TodoWithReduxToolkit"
+      | "FetchDataWithReduxToolKit",
+  ) => {
     onNavigate(view);
     onClose();
   };
