@@ -29,7 +29,10 @@ interface SidebarProps {
       | "todowithRedux"
       | "FetchWithRedux"
       | "TodoWithReduxToolkit"
-      | "FetchDataWithReduxToolKit",
+      | "FetchDataWithReduxToolKit"
+      | "TodoWithReactClassComponents"
+      | "ApiWithClassComponents"
+      | "TodoWithClassComponents",
   ) => void;
   currentView:
     | "home"
@@ -39,7 +42,10 @@ interface SidebarProps {
     | "todowithRedux"
     | "FetchWithRedux"
     | "TodoWithReduxToolkit"
-    | "FetchDataWithReduxToolKit";
+    | "FetchDataWithReduxToolKit"
+    | "TodoWithReactClassComponents"
+    | "ApiWithClassComponents"
+    | "TodoWithClassComponents";
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
@@ -89,6 +95,21 @@ const Sidebar: React.FC<SidebarProps> = ({
       icon: <FetchIcon />,
       view: "FetchDataWithReduxToolKit" as const,
     },
+    {
+      text: "Todo (Class Component with Redux)",
+      icon: <TodoIcon />,
+      view: "TodoWithReactClassComponents" as const,
+    },
+    {
+      text: "API (Class Component)",
+      icon: <FetchIcon />,
+      view: "ApiWithClassComponents" as const,
+    },
+    {
+      text: "Todo (Class Component)",
+      icon: <TodoIcon />,
+      view: "TodoWithClassComponents" as const,
+    },
   ];
 
   const handleMenuClick = (
@@ -100,7 +121,10 @@ const Sidebar: React.FC<SidebarProps> = ({
       | "todowithRedux"
       | "FetchWithRedux"
       | "TodoWithReduxToolkit"
-      | "FetchDataWithReduxToolKit",
+      | "FetchDataWithReduxToolKit"
+      | "TodoWithReactClassComponents"
+      | "ApiWithClassComponents"
+      | "TodoWithClassComponents",
   ) => {
     onNavigate(view);
     onClose();

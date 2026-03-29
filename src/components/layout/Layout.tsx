@@ -11,6 +11,9 @@ import TodoWithRedux from "../../Redux/components/Todo";
 import FetchWithRedux from "../../Redux/components/FetchWithRedux";
 import TodoWithReduxToolkit from "../../ReduxToolkit/components/TodoWithReduxToolkit";
 import FetchDataWithReduxToolKit from "../../ReduxToolkit/components/FetchWithReduxToolkit";
+import ConnectedTodoWithReactClassComponents from "../classcomponent/ReactClassComponents";
+import ApiWithClassComponents from "../classcomponent/FetchApiClassComponents";
+import { TodoWithClassComponents } from "../classcomponent/TodoClassComponents";
 
 interface LayoutProps {
   children?: React.ReactNode;
@@ -27,6 +30,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     | "FetchWithRedux"
     | "TodoWithReduxToolkit"
     | "FetchDataWithReduxToolKit"
+    | "TodoWithReactClassComponents"
+    | "ApiWithClassComponents"
+    | "TodoWithClassComponents"
   >("home");
 
   const handleDrawerToggle = () => {
@@ -42,7 +48,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       | "todowithRedux"
       | "FetchWithRedux"
       | "TodoWithReduxToolkit"
-      | "FetchDataWithReduxToolKit",
+      | "FetchDataWithReduxToolKit"
+      | "TodoWithReactClassComponents"
+      | "ApiWithClassComponents"
+      | "TodoWithClassComponents",
   ) => {
     setCurrentView(view);
   };
@@ -66,6 +75,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         return <TodoWithReduxToolkit />;
       case "FetchDataWithReduxToolKit":
         return <FetchDataWithReduxToolKit />;
+      case "TodoWithReactClassComponents":
+        return <ConnectedTodoWithReactClassComponents />;
+      case "ApiWithClassComponents":
+        return <ApiWithClassComponents />;
+      case "TodoWithClassComponents":
+        return <TodoWithClassComponents />;
       default:
         return <MotivationalQuotes />;
     }

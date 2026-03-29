@@ -20,9 +20,9 @@ const TodoWithRedux = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { todos, edit, text } = useSelector((item: RootState) => item.todo);
   const dispatch = useDispatch<AppDispatch>();
-
+  console.log(todos, edit, text,'todo with redux');
   return (
-    <Page title="📝 Todo App (useReducer)" fullWidth>
+    <Page title="📝 Todo App (todo with redux)" fullWidth>
       <Paper elevation={3} sx={{ p: 3, mb: 3, maxWidth: "100%" }}>
         <Box sx={{ display: "flex", gap: 2, mb: 3 }}>
           <TextField
