@@ -1,25 +1,35 @@
 # 🚀 React + TypeScript Advanced Patterns Project
 
-This project is a comprehensive React application built using **TypeScript** and modern frontend tools. It demonstrates multiple state management techniques, component patterns, and scalable architecture practices.
+This project is a comprehensive React application built using **TypeScript**, **Vite**, and modern frontend tools. It demonstrates multiple state management techniques, scalable architecture, and now includes **Docker support for production deployment**.
 
 ---
 
 ## 📌 Features
 
-- ⚛️ Functional Components with Hooks
-- 🏛️ Class Components (for comparison & learning)
-- 🔄 State Management using:
-  - useState
-  - useReducer
-  - Redux (Classic)
-  - Redux Toolkit (Recommended)
+* ⚛️ Functional Components with Hooks
 
-- 🎯 API Data Fetching Examples
-- 🧱 Reusable UI Components
-- 🧩 Layout System (Header, Sidebar, Theme)
-- 🎨 Theme Management (Dark/Light Mode)
-- 🛡️ Error Handling (Error Boundaries)
-- ⏳ Loading & Error UI States
+* 🏛️ Class Components (for comparison & learning)
+
+* 🔄 State Management:
+
+  * useState
+  * useReducer
+  * Redux (Classic)
+  * Redux Toolkit (Recommended)
+
+* 🎯 API Data Fetching Examples
+
+* 🧱 Reusable UI Components
+
+* 🧩 Layout System (Header, Sidebar, Theme)
+
+* 🎨 Theme Management (Dark/Light Mode)
+
+* 🛡️ Error Handling (Error Boundaries)
+
+* ⏳ Loading & Error UI States
+
+* 🐳 Dockerized for production deployment
 
 ---
 
@@ -28,32 +38,19 @@ This project is a comprehensive React application built using **TypeScript** and
 ```
 src/
 │
-├── assets/                # Images, icons, static files
-│
+├── assets/
 ├── components/
-│   ├── layout/            # Layout components (Header, Sidebar, Theme)
-│   ├── ui/                # Reusable UI components (Loader, ErrorBoundary)
-│   ├── classcomponent/    # Class-based React components
+│   ├── layout/
+│   ├── ui/
+│   ├── classcomponent/
 │   ├── FetchWithUseReducer.tsx
 │   ├── MotivationalQuotes.tsx
 │   ├── Todo.tsx
 │   └── TodowithUserReducer.tsx
 │
-├── Redux/                 # Classic Redux implementation
-│   ├── Store.ts
-│   ├── RootReducer.ts
-│   ├── todoReducer.ts
-│   ├── fetchReducer.ts
-│   └── components/
-│
-├── ReduxToolkit/          # Modern Redux Toolkit implementation
-│   ├── Store.ts
-│   ├── TodoSlice.ts
-│   ├── FetchSlice.ts
-│   └── components/
-│
-├── theme/                 # Theme configuration
-│   └── theme.ts
+├── Redux/
+├── ReduxToolkit/
+├── theme/
 │
 ├── App.tsx
 ├── main.tsx
@@ -62,20 +59,7 @@ src/
 
 ---
 
-## 🧠 Learning Goals
-
-This project is designed to help understand:
-
-- Differences between **Class vs Functional Components**
-- How **useReducer** compares to Redux
-- Why **Redux Toolkit** is preferred over classic Redux
-- Structuring scalable React applications
-- Handling async operations and side effects
-- Creating reusable and maintainable UI components
-
----
-
-## ⚙️ Installation & Setup
+## ⚙️ Installation & Setup (Local Development)
 
 ### 1️⃣ Clone the repository
 
@@ -98,60 +82,120 @@ npm run dev
 
 ---
 
-## 🛠️ Built With
+## 🌱 Environment Variables
 
-- React
-- TypeScript
-- Vite
-- Redux
-- Redux Toolkit
+Create a `.env` file:
+
+```
+VITE_API_URL=https://api.example.com
+VITE_APP_NAME=React App
+```
+
+👉 All variables must start with `VITE_`
+
+---
+
+## 🐳 Docker Setup (Production)
+
+### 📁 Required Files
+
+* Dockerfile
+* nginx.conf
+* .dockerignore
+* docker-compose.yml (optional)
+
+---
+
+### 🧱 Build Docker Image
+
+```bash
+docker build -t react-ts-app \
+  --build-arg VITE_API_URL=https://api.example.com .
+```
+
+---
+
+### 🚀 Run Container
+
+```bash
+docker run -p 3000:80 react-ts-app
+```
+
+👉 Open: http://localhost:3000
+
+---
+
+### 🧩 Using Docker Compose
+
+```bash
+docker-compose up -d --build
+```
+
+---
+
+### 📜 View Logs
+
+```bash
+docker-compose logs -f
+```
+
+---
+
+### ⛔ Stop Containers
+
+```bash
+docker-compose down
+```
+
+---
+
+## 🧠 Important Notes
+
+* Vite builds output to `dist/`
+* Environment variables are injected at **build time**
+* Rebuild Docker image if env values change
+* Nginx is used to serve static files
 
 ---
 
 ## 📊 State Management Comparison
 
-| Method        | Use Case                       | Complexity  |
-| ------------- | ------------------------------ | ----------- |
-| useState      | Simple local state             | ⭐ Easy     |
-| useReducer    | Complex local logic            | ⭐⭐ Medium |
-| Redux         | Global state (legacy approach) | ⭐⭐⭐ Hard |
-| Redux Toolkit | Global state (modern approach) | ⭐⭐ Medium |
+| Method        | Use Case              | Complexity |
+| ------------- | --------------------- | ---------- |
+| useState      | Simple local state    | ⭐ Easy     |
+| useReducer    | Complex logic         | ⭐⭐ Medium  |
+| Redux         | Global state (legacy) | ⭐⭐⭐ Hard   |
+| Redux Toolkit | Global state (modern) | ⭐⭐ Medium  |
 
 ---
 
-## 🎯 Best Practices Followed
+## 🎯 Best Practices
 
-- Separation of concerns
-- Reusable components
-- Modular folder structure
-- Type safety with TypeScript
-- Clean and readable code
-
----
-
-## ⚠️ Notes
-
-- Both **Redux and Redux Toolkit** are included for learning purposes.
-- In production applications, prefer **Redux Toolkit**.
+* Modular folder structure
+* Reusable components
+* Type safety with TypeScript
+* Clean architecture
+* Separation of concerns
 
 ---
 
 ## 🚀 Future Improvements
 
-- ✅ Add React Router for navigation
-- ✅ Introduce API service layer (Axios)
-- ✅ Add environment configuration (.env)
-- ✅ Unit and integration testing
-- ✅ Performance optimization
+* React Router integration
+* Axios service layer
+* Runtime environment variables
+* Unit & integration testing
+* CI/CD pipeline
+* Cloud deployment (AWS / Docker Hub / Kubernetes)
 
 ---
 
 ## 👨‍💻 Author
 
-Developed as part of a React learning journey to explore advanced concepts and real-world architecture.
+Built as part of a React learning journey exploring advanced frontend architecture and DevOps practices.
 
 ---
 
 ## 📄 License
 
-This project is open-source and available under the MIT License.
+MIT License
