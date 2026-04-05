@@ -32,7 +32,8 @@ interface SidebarProps {
       | "FetchDataWithReduxToolKit"
       | "TodoWithReactClassComponents"
       | "ApiWithClassComponents"
-      | "TodoWithClassComponents",
+      | "TodoWithClassComponents"
+      | "ReactFromWithZodlib",
   ) => void;
   currentView:
     | "home"
@@ -45,7 +46,8 @@ interface SidebarProps {
     | "FetchDataWithReduxToolKit"
     | "TodoWithReactClassComponents"
     | "ApiWithClassComponents"
-    | "TodoWithClassComponents";
+    | "TodoWithClassComponents"
+    | "ReactFromWithZodlib";
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
@@ -110,6 +112,11 @@ const Sidebar: React.FC<SidebarProps> = ({
       icon: <TodoIcon />,
       view: "TodoWithClassComponents" as const,
     },
+    {
+      text: "Profile Form (Zod)",
+      icon: <HomeIcon />,
+      view: "ReactFromWithZodlib" as const,
+    },
   ];
 
   const handleMenuClick = (
@@ -124,7 +131,8 @@ const Sidebar: React.FC<SidebarProps> = ({
       | "FetchDataWithReduxToolKit"
       | "TodoWithReactClassComponents"
       | "ApiWithClassComponents"
-      | "TodoWithClassComponents",
+      | "TodoWithClassComponents"
+      | "ReactFromWithZodlib",
   ) => {
     onNavigate(view);
     onClose();
