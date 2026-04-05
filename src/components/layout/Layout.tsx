@@ -14,6 +14,7 @@ import FetchDataWithReduxToolKit from "../../ReduxToolkit/components/FetchWithRe
 import ConnectedTodoWithReactClassComponents from "../classcomponent/ReactClassComponents";
 import ApiWithClassComponents from "../classcomponent/FetchApiClassComponents";
 import { TodoWithClassComponents } from "../classcomponent/TodoClassComponents";
+import ReactFromWithZodlib from "../ReactFromWithZodlib";
 
 interface LayoutProps {
   children?: React.ReactNode;
@@ -33,6 +34,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     | "TodoWithReactClassComponents"
     | "ApiWithClassComponents"
     | "TodoWithClassComponents"
+    | "ReactFromWithZodlib"
   >("home");
 
   const handleDrawerToggle = () => {
@@ -51,7 +53,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       | "FetchDataWithReduxToolKit"
       | "TodoWithReactClassComponents"
       | "ApiWithClassComponents"
-      | "TodoWithClassComponents",
+      | "TodoWithClassComponents"
+      | "ReactFromWithZodlib"
   ) => {
     setCurrentView(view);
   };
@@ -81,6 +84,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         return <ApiWithClassComponents />;
       case "TodoWithClassComponents":
         return <TodoWithClassComponents />;
+      case "ReactFromWithZodlib":
+        return <ReactFromWithZodlib />;
       default:
         return <MotivationalQuotes />;
     }
